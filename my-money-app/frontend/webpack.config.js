@@ -12,7 +12,7 @@ module.exports = {
     contentBase: './public',
   },
   resolve: {
-    extensions: ['','js','js'],
+    extensions: ['', '.js', '.jsx'],
     alias: {
       modules: __dirname + '/node_modules',
       jquery: 'modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js',
@@ -34,7 +34,7 @@ module.exports = {
       exclude: /node_modules/,
       query: {
         presets: ['es2015', 'react'],
-        plugin: ['transform-object-rest-spread']
+        plugins: ['transform-object-rest-spread']
       }
       },{
         test: /\.css$/,
