@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --inline --hot",
-    "production": "webpack --progress -p"  
+    "production": "webpack --progress -p"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "admin-lte": "2.3.6",
+    "admin-lte": "^2.3.6",
     "axios": "0.15.3",
     "babel-core": "6.22.1",
     "babel-loader": "6.2.10",
