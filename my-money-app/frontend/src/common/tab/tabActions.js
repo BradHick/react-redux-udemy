@@ -1,9 +1,15 @@
 export function selectTab(tabId){
-  console.log('------------------------------------');
-  console.log(tabId);
-  console.log('------------------------------------');
   return{
     type: 'TAB_SELECTED',
     payload: tabId
   };
 }
+
+export function showTabs(...tabIds){
+  const tabsToShoww = {  };
+  tabIds.forEach(e => tabsToShoww[e] = true);
+  return {
+    type: 'TAB_SHOWED',
+    payload: tabsToShoww
+  };
+};
