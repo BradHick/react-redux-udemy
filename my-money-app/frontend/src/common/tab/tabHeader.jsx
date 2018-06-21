@@ -12,7 +12,6 @@ class TabHeader extends Component {
     
     return (
       <If test={ visible }>
-        <div>
           <li className={selected ? 'active' : ''}>
             <a href='javascript:;' data-toggle='tab' 
               data-target={ this.props.target }
@@ -20,7 +19,6 @@ class TabHeader extends Component {
               <i className={`fa fa-${this.props.icon}`}></i>{ this.props.label }
             </a>
           </li>    
-        </div>
       </If>
     );
   };
