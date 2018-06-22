@@ -33,6 +33,6 @@ class BillingCycleForm extends Component {
 
 BillingCycleForm = reduxForm({form: 'billingCycleForm', destroyOnUnmount: false})(BillingCycleForm);
 
-const mapDispatchToProps = bindActionCreators({ init }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch);
 
 export default connect(null, mapDispatchToProps)(BillingCycleForm);
