@@ -2,7 +2,7 @@ import './auth.css';
 import React, { Component } from 'react';
 import { reduxForm, Field, values } from 'redux-form';
 import { connect } from 'react-redux';
-import { bindActionCreators, combineReducers } from 'redux';
+import { bindActionCreators } from 'redux';
 
 import { login, signup } from './authActions';
 import Row from '../common/layout/row';
@@ -21,7 +21,7 @@ class Auth extends Component{
     this.setState({ loginMode: !this.state.loginMode });
   }
 
-  onSubmit(){
+  onSubmit(values){
     const { login, signup } = this.props;
     this.state.loginMode ? login(values) : signup(values);
   };
@@ -66,5 +66,5 @@ class Auth extends Component{
 };
 
 Auth = reduxForm({ form: 'authForm' })(Auth);
-const mapDispatchToProps = dispatch => combineReducers({ login, signup }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ login, signup }, dispatch);
 export default connect(null, mapDispatchToProps)(Auth);

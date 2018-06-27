@@ -9,14 +9,14 @@ const env = require('../../.env');
 | Validate Email
 |--------------------------------------------------
 */
-const emailRegex = /\S+@\S+\.\S+/;
+// const emailRegex = /\S+@\S+\.\S+/;
 
 /**
 |--------------------------------------------------
 | validate password
 |--------------------------------------------------
 */
-const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/;
+// const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/;
 
 const sendErrorsFromDB = (res, dbErrors) => {
   const errors = [];
@@ -56,34 +56,32 @@ const signUp = (req, res, next)=> {
   const password = req.body.password || '';
   const confirmPassword = req.body.confirm_password || '';
 
-  /**
-  |--------------------------------------------------
-  | Checking email
-  |--------------------------------------------------
-  */
-  if(!email.match(emailRegex)){
-    return res.status(400).send({ errors: ['O email informado está inválido'] });
-  };
+  // /**
+  // |--------------------------------------------------
+  // | Checking email
+  // |--------------------------------------------------
+  // */
+  // if(!email.match(emailRegex)){
+  //   return res.status(400).send({ errors: ['O email informado está inválido'] });
+  // };
 
 
-  /**
-  |--------------------------------------------------
-  | Checking password
-  |--------------------------------------------------
-  */
-  if (!password.match(passwordRegex)) { 
-    return res.status(400).send({
-      errors: [ "Senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$%) e tamanho entre 6-20." ]
-    }) 
-  };
+  // /**
+  // |--------------------------------------------------
+  // | Checking password
+  // |--------------------------------------------------
+  // */
+  // if (!password.match(passwordRegex)) { 
+  //   return res.status(400).send({
+  //     errors: [ "Senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$%) e tamanho entre 6-20." ]
+  //   }) 
+  // };
 
   const salt = bcrypt.genSaltSync();
   const passwordHash = bcrypt.hashSync(password, salt);
-
-  if(bcrypt.compareSync(confirmPassword, passwordHash)){
-    return res.status(400).send({ errors: ['Senhas não conferem'] });
-  };
-
+  if (!bcrypt.compareSync(confirmPassword, passwordHash)) {
+      return res.status(400).send({ errors: ['Senhas não conferem.'] })
+  }
   User.findOne({email}, (err, user) => {
     if(err){
       return sendErrorsFromDB(res, err);
